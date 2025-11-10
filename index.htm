@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sítio Bonaterra — Tradição e Sustentabilidade</title>
+    
+    <!-- Google Fonts: Poppins (Design Moderno) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS IN-PAGE: Estilo Modernizado -->
+    <style>
+        /* Reset Básico e Fontes Modernas */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-beige); /* Fundo bege suave */
+            color: var(--text-light);
+            line-height: 1.7; /* Mais espaçamento entre linhas */
+            overflow-x: hidden; /* Impede scroll horizontal da página */
+        }
+
+        /* Variáveis de Cores Temáticas (Refinadas) */
+        :root {
+            --green-dark: #225725; /* Verde mais profundo e corporativo */
+            --green-medium: #3e8e41; /* Verde médio suave */
+            --brown-earth: #795548; /* Tom de madeira/terra */
+            --accent-orange: #E67E22; /* Laranja mais sofisticado */
+            --text-light: #444; /* Cor de texto principal (não preto puro) */
+            --bg-light-green: #F0F5F0; /* Fundo verde muito claro */
+            --bg-beige: #F9F7F2; /* Fundo bege */
+        }
+
+        /* Estrutura Principal */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: var(--green-dark);
+            font-size: 2.5em; /* Título de seção maior */
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--green-medium);
+        }
+
+        /* 1. TOPO/HEADER simplificado */
+        .site-header {
+            background-color: var(--green-dark);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra mais suave */
+            position: sticky; 
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative; /* Necessário para o ícone do carrinho */
+        }
+        
+        .site-title {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: none; /* Mais limpo sem sombra */
+        }
+
+        .site-slogan {
+            font-size: 1.1em;
+            font-weight: 300; /* Fonte leve */
+            font-style: normal;
+            opacity: 0.9;
+        }
+        
+        /* 2. Conteúdo Textual (Introdução, Histórico, Missão) */
+        .text-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        .text-content p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            line-height: 1.8; /* Mais espaçamento de leitura */
+        }
+
+        .ilpf-highlight {
+            font-style: italic;
+            color: var(--brown-earth);
+            font-weight: 600;
+        }
+
+        .mission {
+            margin-top: 30px;
+            padding: 25px;
+            border-left: 5px solid var(--accent-orange);
+            background-color: white; /* Fundo limpo */
+            font-weight: 400;
+            border-radius: 8px;
+        }
+        
+        /* 3. Seção da Produção */
+        .producao-section {
+            background-color: var(--bg-light-green); /* Fundo verde claro */
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .producao-section h2 {
+            border-bottom: none;
+        }
+        
+        /* 4. CARROSSEL DE PRODUTOS (Exibindo 4 cards) */
+        .produtos-main {
+            padding: 60px 0;
+        }
+        
+        .carousel-wrapper {
+            max-width: 1200px; /* Alinhado com o site */
+            margin: 0 auto;
+            overflow: hidden; 
+            position: relative;
+            padding: 0; /* Padding removido, não precisamos mais de espaço para botões */
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            gap: 20px; /* Espaçamento moderno entre os cards */
+            
+            /* --- NOVOS ESTILOS PARA SCROLL --- */
+            overflow-x: auto; /* Habilita o scroll horizontal */
+            scroll-snap-type: x mandatory; /* "Trava" o scroll em um card */
+            padding: 10px 20px; /* Padding interno para os cards não colarem nas bordas */
+            -webkit-overflow-scrolling: touch; /* Scroll suave em iOS */
+            
+            /* --- CENTRALIZA O CARROSSEL --- */
+            justify-content: center; /* Centraliza os cards quando não há overflow */
+            
+            /* Esconde a barra de scroll (mas mantém funcionalidade) */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .carousel-track::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        /* --- FIM DOS NOVOS ESTILOS --- */
+
+
+        .produto-card {
+            flex: 0 0 auto;
+            width: 255px; /* (1080px - 60px de gap) / 4 = 255px */
+            margin: 0; /* Removida margem, usando gap */
+            border: none; /* Design sem borda */
+            border-radius: 12px; /* Cantos mais arredondados */
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra suave */
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Indica que o card é clicável */
+            scroll-snap-align: start; /* Para o scroll-snap */
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Sombra mais forte no hover */
+        }
+
+        .produto-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .produto-info {
+            padding: 20px;
+        }
+
+        .produto-info h4 {
+            font-size: 1.3em;
+            color: var(--green-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .produto-descricao {
+            font-size: 0.9em;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            min-height: 40px; 
+        }
+
+        .produto-preco {
+            font-size: 1.5em;
+            color: var(--accent-orange);
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .btn-compra {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--green-medium);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn-compra:hover {
+            background-color: var(--green-dark); /* Escurece no hover */
+            transform: translateY(-2px);
+        }
+        
+        /* 5. Rodapé/Agradecimento */
+        .site-footer {
+            background-color: var(--green-dark);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 5px solid var(--green-medium); /* Separador */
+        }
+
+        .site-footer p {
+            max-width: 800px;
+            margin: 15px auto;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .cattle-emoji {
+            font-size: 2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+
+        /* RESPONSIVIDADE (Celulares e Tablets) */
+        @media (max-width: 1150px) {
+            /* 3 cards */
+            .carousel-wrapper {
+                max-width: 900px; 
+            }
+            .carousel-track {
+                justify-content: flex-start; /* Permite scroll em vez de centro */
+            }
+        }
+        
+        @media (max-width: 900px) {
+            /* 2 cards */
+            .carousel-wrapper {
+                max-width: 600px; 
+            }
+            .carousel-track {
+                justify-content: flex-start; /* Permite scroll em vez de centro */
+            }
+        }
+
+        @media (max-width: 650px) {
+            /* 1 card */
+            .carousel-wrapper {
+                max-width: 320px; /* AJUSTADO */
+                padding: 0; /* Padding removido */
+            }
+            .produto-card {
+                width: 280px; /* AJUSTADO */
+            }
+            .carousel-track {
+                justify-content: flex-start; /* Permite scroll em vez de centro */
+            }
+            .site-title {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .text-content {
+                text-align: left; /* MELHORA A LEITURA NO CELULAR */
+            }
+        }
+        
+        /* --- NOVOS ESTILOS: ÍCONE DO CARRINHO --- */
+        .cart-icon-wrapper {
+            position: absolute;
+            top: 50%;
+            right: 25px;
+            transform: translateY(-50%);
+            color: white;
+            cursor: pointer;
+        }
+        
+        .cart-icon-wrapper svg {
+            width: 30px;
+            height: 30px;
+            fill: currentColor;
+        }
+        
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--accent-orange);
+            color: white;
+            font-size: 0.75em;
+            font-weight: 600;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: none; /* Começa escondido */
+            place-items: center; /* Centraliza o número */
+        }
+        
+        /* --- ESTILOS DE MODAL GENÉRICOS --- */
+        .modal-overlay {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        /* --- ESTILOS: MODAL DE PRODUTO (MAIS COMPACTO) --- */
+        #product-modal .modal-content {
+            max-width: 500px; /* <- REDUZIDO */
+            max-height: 90vh; /* <- ADICIONADO */
+            overflow-y: auto; /* <- ADICIONADO */
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-content h3 {
+            color: var(--green-dark);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .modal-content p {
+            font-size: 1.05em;
+            margin-bottom: 20px;
+        }
+        
+        .modal-content h4 {
+            color: var(--accent-orange);
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        
+        /* --- NOVO ESTILO: Botão de compra do modal --- */
+        #modal-buy-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--green-medium);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        #modal-buy-btn:hover {
+            background-color: var(--green-dark);
+        }
+        
+        /* --- NOVOS ESTILOS: MODAL DO CARRINHO --- */
+        #cart-modal {
+            justify-content: flex-end; /* Alinha o modal à direita */
+            background: none; /* Overlay transparente */
+        }
+        
+        #cart-modal .modal-content {
+            width: 100%;
+            max-width: 400px; /* Largura do carrinho */
+            height: 100%;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: hidden;
+        }
+        
+        #cart-modal .modal-content h3 {
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .cart-items-list {
+            flex-grow: 1;
+            overflow-y: auto; /* Lista de itens rolável */
+            padding: 10px 0;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+        }
+        
+        .cart-item-info {
+            flex-grow: 1;
+        }
+        
+        .cart-item-info h5 {
+            font-size: 1em;
+            color: var(--text-light);
+        }
+        
+        .cart-item-info p {
+            font-size: 0.9em;
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        
+        .cart-item-remove {
+            font-size: 0.8em;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        .cart-item-remove:hover {
+            color: red;
+        }
+        
+        .cart-empty-message {
+            text-align: center;
+            color: #888;
+            margin-top: 50px;
+        }
+        
+        .cart-footer {
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .btn-checkout {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--green-medium);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-checkout:hover {
+            background-color: var(--green-dark);
+        }
+
+        /* --- NOVOS ESTILOS: MODAL DE CHECKOUT --- */
+        #checkout-modal .modal-content {
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        #checkout-modal .modal-content h3 {
+            color: var(--green-dark);
+            font-size: 1.8em;
+        }
+        
+        #checkout-modal .modal-content p {
+            font-size: 1.1em;
+            margin: 15px 0 25px 0;
+        }
+        
+        .checkout-icon {
+            font-size: 4em;
+            color: var(--green-medium);
+            margin-bottom: 20px;
+        }
+        
+        .btn-close-checkout {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--green-medium);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        /* --- NOVOS ESTILOS: NOTIFICAÇÃO 'TOAST' --- */
+        .toast-notification {
+            display: none; /* Escondido */
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--green-dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            z-index: 3000;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- 1. TOPO/HEADER com Título e Slogan (Navegação removida) -->
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-title-group">
+                <h1 class="site-title">SÍTIO BONATERRA</h1>
+                <p class="site-slogan">Tradição, sustentabilidade e amor pela terra.</p>
+            </div>
+            
+            <!-- ÍCONE DO CARRINHO ADICIONADO -->
+            <div class="cart-icon-wrapper" id="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H48.1c4.6 0 8.8 1.9 11.9 5.2L111 64H464c26.5 0 48 21.5 48 48V320c0 26.5-21.5 48-48 48H128c-26.5 0-48-21.5-48-48V112H64c-8.8 0-16-7.2-16-16s7.2-16 16-16H83.2c4.6 0 8.8 1.9 11.9 5.2L128 128V320c0 8.8 7.2 16 16 16H464c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H134.1L94.1 12.6C90.3 8.3 84.7 5.6 79 5.6H24C10.7 5.6 0 16.3 0 29.6V488c0 13.3 10.7 24 24 24H72c13.3 0 24-10.7 24-24s-10.7-24-24-24H24V24zM160 416a48 48 0 1 0 0 96 48 48 0 1 0 0-96zM416 416a48 48 0 1 0 0 96 48 48 0 1 0 0-96z"/></svg>
+                <span id="cart-count">0</span>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- 2. INTRODUÇÃO: ILPF e Localização -->
+    <section class="text-section">
+        <h2>O Sítio Bonaterra</h2>
+        <div class="text-content">
+            <p>
+                Localizado em Varginha, Itapetininga/SP, o Sítio Bonaterra é uma propriedade rural de 30 hectares que trabalha com o sistema <span class="ilpf-highlight">ILPF (Integração Lavoura-Pecuária-Floresta)</span>. Aqui, unimos o cultivo de soja, sorgo e eucalipto à criação de gado Nelore, garantindo equilíbrio entre produtividade e respeito à natureza.
+            </p>
+            <!-- COMENTÁRIO PARA IMAGEM: Aqui seria ideal uma foto aérea do Sítio ou um diagrama do sistema ILPF. -->
+        </div>
+    </section>
+    
+    <!-- 3. HISTÓRIA E SUSTENTABILIDADE -->
+    <section class="text-section">
+        <h2>Nossa História e Compromisso</h2>
+        <div class="text-content">
+            <p>
+                Com mais de 70 anos de história, nossa família aprendeu que o segredo da terra está no cuidado. Começamos com poucas cabeças de gado e sementes de sorgo, e hoje produzimos de forma autossuficiente, com práticas sustentáveis como adubação orgânica, manejo integrado de pragas e preservação das matas nativas.
+            </p>
+            <p>
+                A madeira dos eucaliptos, cultivados em 10 hectares, também é aproveitada de forma responsável, gerando sombra, abrigo e equilíbrio ambiental.
+            </p>
+        </div>
+    </section>
+    
+    <!-- 4. PRODUÇÃO E MISSÃO (Informação da Ração) -->
+    <section class="producao-section">
+        <h2>A Ração Bonaterra: Do Campo ao Cocho</h2>
+        <div class="text-content">
+            <p>
+                Nosso gado é criado com alimentação natural à base de sorgo e soja cultivados no próprio sítio. Desses grãos, nasce a Ração Bonaterra, 100% natural e nutritiva, feita com o mesmo cuidado que dedicamos aos nossos animais.
+            </p>
+            <p>
+                Produzimos diferentes tipos e variedades de ração, ideais para cada fase e necessidade do gado. O produto é vendido em pacotes de 40 kg por R$ 90,00, e também disponível para pedidos on-line. Além disso, mantemos parcerias com produtores locais e agropecuárias da região, fortalecendo o campo e gerando renda sustentável.
+            </p>
+            <div class="mission">
+                🌱 MISSÃO: Produzir com respeito, qualidade e sustentabilidade, mostrando que é possível crescer sem esgotar a terra.
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CARROSSEL DE PRODUTOS -->
+    <main class="produtos-main">
+        <h2>Nossas Rações em Destaque</h2>
+        
+        <div class="carousel-wrapper">
+            <!-- Área dos Itens do Carrossel -->
+            <div class="carousel-track">
+                
+                <!-- PRODUTO 1: Ração Bonaterra - Nutricampo -->
+                <!-- Atributos 'data-*' adicionados para o Modal e Carrinho -->
+                <div class="produto-card" 
+                    data-id="1"
+                    data-title="Nutricampo"
+                    data-price="40.00"
+                    data-img-src="imagens/nutri campo.jpeg"
+                    data-full-desc="A Nutricampo é a nossa ração base, desenvolvida para a manutenção e saúde geral do rebanho adulto. Feita com uma mistura balanceada de sorgo e farelo de soja, garante a energia e os nutrientes necessários para o dia-a-dia do gado. Pacote 40kg.">
+                    
+                     <img src="imagens/nutri campo.jpeg"  alt="Ração Bonaterra Nutricampo">
+                    <div class="produto-info">
+                        <h4>Nutricampo</h4>
+                        <p class="produto-descricao">Ração base para manutenção e saúde geral do rebanho adulto. Pacote 40kg.</p>
+                        <p class="produto-preco">R$ 40,00</p>
+                        <button class="btn-compra">Comprar</button>
+                    </div>
+                </div>
+
+                <!-- PRODUTO 2: Farelo Bonaterra -->
+                <div class="produto-card"
+                    data-id="2"
+                    data-title="Farelo Bonaterra"
+                    data-price="35.00"
+                    data-img-src="imagens/farelo.jpeg"
+                    data-full-desc="Nosso farelo é 100% puro, derivado da prensagem dos nossos grãos de soja e sorgo. É um suplemento ideal para complementação proteica e energética, podendo ser misturado a outras rações ou silagem para enriquecer a dieta do animal.">
+                    
+                    <img src="imagens/farelo.jpeg" alt="Farelo Bonaterra">
+                    <div class="produto-info">
+                        <h4>Farelo Bonaterra</h4>
+                        <p class="produto-descricao">Farelo puro de soja e sorgo. Ideal para complementação proteica e energética.</p>
+                        <p class="produto-preco">R$ 35,00</p>
+                        <button class="btn-compra">Comprar</button>
+                    </div>
+                </div>
+
+                <!-- PRODUTO 3: Sorgo Premium -->
+                <div class="produto-card"
+                    data-id="3"
+                    data-title="Sorgo Premium"
+                    data-price="50.00"
+                    data-img-src="imagens/sorgo premium.jpeg"
+                    data-full-desc="Grãos de sorgo selecionados e limpos, cultivados em nosso sistema ILPF. Este produto tem alta palatabilidade e é uma excelente fonte de energia de liberação lenta, ajudando na engorda e na manutenção do peso do rebanho.">
+                    
+                    <img src="imagens/sorgo premium.jpeg" alt="Sorgo Premium">
+                    <div class="produto-info">
+                        <h4>Sorgo Premium</h4>
+                        <p class="produto-descricao">Grãos de sorgo selecionados, alta palatabilidade e fonte de energia de liberação lenta.</p>
+                        <p class="produto-preco">R$ 50,00</p>
+                        <button class="btn-compra">Comprar</button>
+                    </div>
+                </div>
+
+                <!-- PRODUTO 4: Cria & Recria -->
+                <div class="produto-card"
+                    data-id="4"
+                    data-title="Cria & Recria"
+                    data-price="45.00"
+                    data-img-src="imagens/cria e recria.jpeg"
+                    data-full-desc="Uma fórmula específica para as fases mais importantes da vida do animal. Enriquecida com vitaminas e minerais essenciais, esta ração garante o desenvolvimento saudável de bezerros e novilhas, fortalecendo ossos e sistema imunológico.">
+                    
+                    <img src="imagens/cria e recria.jpeg" alt="Cria & Recria">
+                    <div class="produto-info">
+                        <h4>Cria & Recria</h4>
+                        <p class="produto-descricao">Fórmula específica para o desenvolvimento saudável de bezerros e novilhas.</p>
+                        <p class="produto-preco">R$ 45,00</p>
+                        <button class="btn-compra">Comprar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- 6. Rodapé/Agradecimento -->
+    <footer class="site-footer">
+        <span class="cattle-emoji">💚🐄</span>
+        <h3>Agradecimento</h3>
+        <p>
+            Agradecemos a todos que acreditam no nosso trabalho e compartilham da mesma visão: um campo mais verde, consciente e produtivo. Cada semente plantada aqui é um lembrete de que o futuro começa com as escolhas que fazemos hoje.
+        </p>
+    </footer>
+
+    <!-- HTML ADICIONADO: Modal de Produto -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="product-modal-close-btn">&times;</button>
+            <img id="modal-img" src="https://placehold.co/300x180/2E8B57/ffffff?text=RA%C3%87%C3%83O+1" alt="Produto">
+            <h3 id="modal-title">Nome do Produto</h3>
+            <p id="modal-desc">Descrição completa do produto...</p>
+            <h4 id="modal-price">R$ 00,00</h4>
+            <!-- BOTÃO DE COMPRAR ADICIONADO AO MODAL -->
+            <button id="modal-buy-btn">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    
+    <!-- HTML ADICIONADO: Modal do Carrinho -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="cart-modal-close-btn">&times;</button>
+            <h3>Meu Carrinho</h3>
+            
+            <div class="cart-items-list" id="cart-items-list">
+                <!-- Itens do carrinho serão inseridos aqui pelo JS -->
+                <p class="cart-empty-message">Seu carrinho está vazio.</p>
+            </div>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 0,00</span>
+                </div>
+                <button class="btn-checkout" id="btn-checkout">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- HTML ADICIONADO: Modal de Checkout/Entrega -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content">
+            <div class="checkout-icon">🚚</div>
+            <h3>Pedido Confirmado!</h3>
+            <p>Obrigado por comprar conosco. Seu pedido (simulado) foi recebido e já estamos preparando sua entrega!</p>
+            <button class="btn-close-checkout" id="btn-close-checkout">Fechar</button>
+        </div>
+    </div>
+    
+    <!-- HTML ADICIONADO: Notificação "Toast" -->
+    <div class="toast-notification" id="cart-toast">
+        Item adicionado ao carrinho!
+    </div>
+
+
+    <!-- JAVASCRIPT: Funcionalidade do Carrinho e Modais -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- VARIÁVEIS GLOBAIS ---
+            let cartItems = []; // Array para guardar os itens: { id, title, price, imgSrc, quantity }
+            let toastTimer;
+            let currentModalProductData = null; // Guarda os dados do produto no modal
+            
+            // --- ELEMENTOS DO DOM ---
+            const cartCountElement = document.getElementById('cart-count');
+            const toastElement = document.getElementById('cart-toast');
+            const allBuyButtons = document.querySelectorAll('.btn-compra');
+            
+            // Modal de Produto
+            const productModal = document.getElementById('product-modal');
+            const productModalCloseBtn = document.getElementById('product-modal-close-btn');
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalPrice = document.getElementById('modal-price');
+            const allProductCards = document.querySelectorAll('.produto-card');
+            const modalBuyBtn = document.getElementById('modal-buy-btn'); // Botão de comprar do modal
+            
+            // Modal do Carrinho
+            const cartModal = document.getElementById('cart-modal');
+            const cartIcon = document.getElementById('cart-icon');
+            const cartModalCloseBtn = document.getElementById('cart-modal-close-btn');
+            const cartItemsList = document.getElementById('cart-items-list');
+            const cartTotalElement = document.getElementById('cart-total');
+            const btnCheckout = document.getElementById('btn-checkout');
+            
+            // Modal de Checkout
+            const checkoutModal = document.getElementById('checkout-modal');
+            const btnCloseCheckout = document.getElementById('btn-close-checkout');
+
+            
+            // --- FUNÇÕES ---
+
+            // Função para formatar o preço
+            const formatCurrency = (value) => {
+                return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            }
+
+            // Função para mostrar notificação "Toast"
+            const showToast = (message) => {
+                toastElement.textContent = message;
+                toastElement.style.display = 'block';
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    toastElement.style.display = 'none';
+                }, 2500);
+            }
+
+            // Função para renderizar os itens no modal do carrinho
+            const renderCartItems = () => {
+                cartItemsList.innerHTML = ''; // Limpa a lista
+                
+                if (cartItems.length === 0) {
+                    cartItemsList.innerHTML = '<p class="cart-empty-message">Seu carrinho está vazio.</p>';
+                    btnCheckout.disabled = true;
+                    btnCheckout.style.opacity = 0.5;
+                    return;
+                }
+                
+                btnCheckout.disabled = false;
+                btnCheckout.style.opacity = 1;
+
+                cartItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.imgSrc}" alt="${item.title}">
+                        <div class="cart-item-info">
+                            <h5>${item.title} (x${item.quantity})</h5>
+                            <p>${formatCurrency(item.price * item.quantity)}</p>
+                            <button class="cart-item-remove" data-id="${item.id}">Remover</button>
+                        </div>
+                    `;
+                    cartItemsList.appendChild(itemElement);
+                });
+                
+                // Adiciona listeners aos botões "Remover"
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const idToRemove = e.target.dataset.id;
+                        removeItemFromCart(idToRemove);
+                    });
+                });
+            }
+
+            // Função para atualizar o total e o contador
+            const updateCartSummary = () => {
+                let totalCount = 0;
+                let totalPrice = 0;
+                
+                cartItems.forEach(item => {
+                    totalCount += item.quantity;
+                    totalPrice += item.price * item.quantity;
+                });
+                
+                // Atualiza contador no header
+                cartCountElement.textContent = totalCount;
+                cartCountElement.style.display = totalCount > 0 ? 'flex' : 'none';
+                
+                // Atualiza total no modal do carrinho
+                cartTotalElement.textContent = formatCurrency(totalPrice);
+                
+                // Renderiza a lista de itens
+                renderCartItems();
+            }
+
+            // Função para adicionar item ao carrinho
+            const addItemToCart = (product) => {
+                const existingItem = cartItems.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cartItems.push({ ...product, quantity: 1 });
+                }
+                
+                showToast(`${product.title} foi adicionado ao carrinho!`);
+                updateCartSummary();
+            }
+            
+            // Função para remover item do carrinho
+            const removeItemFromCart = (id) => {
+                cartItems = cartItems.filter(item => item.id !== id);
+                showToast(`Item removido do carrinho.`);
+                updateCartSummary();
+            }
+
+            // Função genérica para fechar modais
+            const closeModal = (modal) => {
+                modal.style.display = 'none';
+            }
+
+            // --- LÓGICA DE EVENTOS ---
+
+            // 1. Lógica de Adicionar ao Carrinho (botão nos cards)
+            allBuyButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Impede o modal de produto de abrir
+                    
+                    const card = e.target.closest('.produto-card');
+                    const productData = {
+                        id: card.dataset.id,
+                        title: card.dataset.title,
+                        price: parseFloat(card.dataset.price),
+                        imgSrc: card.dataset.imgSrc
+                    };
+                    
+                    addItemToCart(productData);
+                });
+            });
+
+            // 2. Lógica do Modal de Produto (clique no card)
+            allProductCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Pega os dados do card
+                    const productData = {
+                        id: card.dataset.id,
+                        title: card.dataset.title,
+                        price: parseFloat(card.dataset.price),
+                        imgSrc: card.dataset.imgSrc,
+                        fullDesc: card.dataset.fullDesc
+                    };
+
+                    // Salva os dados do produto atual para o botão "Comprar" do modal
+                    currentModalProductData = productData;
+                    
+                    // Preenche o modal
+                    modalImg.src = productData.imgSrc;
+                    modalTitle.textContent = productData.title;
+                    modalDesc.textContent = productData.fullDesc;
+                    modalPrice.textContent = formatCurrency(productData.price);
+                    
+                    productModal.style.display = 'flex';
+                });
+            });
+            
+            // NOVO: Evento para o botão "Comprar" dentro do modal
+            modalBuyBtn.addEventListener('click', () => {
+                if (currentModalProductData) {
+                    addItemToCart(currentModalProductData);
+                    closeModal(productModal); // Fecha o modal de produto
+                }
+            });
+            
+            // Fechar Modal de Produto
+            productModalCloseBtn.addEventListener('click', () => closeModal(productModal));
+            productModal.addEventListener('click', (e) => {
+                if (e.target === productModal) closeModal(productModal);
+            });
+            
+            // 3. Lógica do Modal de Carrinho
+            cartIcon.addEventListener('click', () => {
+                updateCartSummary(); // Garante que o carrinho está atualizado antes de abrir
+                cartModal.style.display = 'flex';
+            });
+            
+            // Fechar Modal de Carrinho
+            cartModalCloseBtn.addEventListener('click', () => closeModal(cartModal));
+            cartModal.addEventListener('click', (e) => {
+                // Não fecha ao clicar no overlay, pois é um painel lateral
+                if (e.target === cartModal) closeModal(cartModal);
+            });
+
+            // 4. Lógica de Checkout
+            btnCheckout.addEventListener('click', () => {
+                closeModal(cartModal);
+                checkoutModal.style.display = 'flex';
+                
+                // Limpa o carrinho (simulação de compra finalizada)
+                cartItems = [];
+                updateCartSummary();
+            });
+            
+            // Fechar Modal de Checkout
+            btnCloseCheckout.addEventListener('click', () => closeModal(checkoutModal));
+            checkoutModal.addEventListener('click', (e) => {
+                if (e.target === checkoutModal) closeModal(checkoutModal);
+            });
+            
+        }); // Fecha o listener DOMContentLoaded
+    </script>
+</body>
+</html>
