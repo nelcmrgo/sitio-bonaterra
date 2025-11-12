@@ -177,6 +177,11 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer; /* Indica que o card é clicável */
             scroll-snap-align: start; /* Para o scroll-snap */
+
+            /* --- CORREÇÃO DE ALINHAMENTO --- */
+            display: flex;          /* 1. Torna o card um container flex */
+            flex-direction: column; /* 2. Organiza os filhos (img, .produto-info) em coluna */
+            /* --- FIM DA CORREÇÃO --- */
         }
 
         .produto-card:hover {
@@ -193,6 +198,12 @@
 
         .produto-info {
             padding: 20px;
+            
+            /* --- CORREÇÃO DE ALINHAMENTO --- */
+            display: flex;          /* 3. Torna a área de info um container flex */
+            flex-direction: column; /* 4. Organiza os filhos (título, desc, preço, botão) em coluna */
+            flex-grow: 1;           /* 5. Faz esta div crescer e ocupar o espaço restante no card */
+            /* --- FIM DA CORREÇÃO --- */
         }
 
         .produto-info h4 {
@@ -229,6 +240,10 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: background-color 0.2s, transform 0.2s;
+            
+            /* --- CORREÇÃO DE ALINHAMENTO --- */
+            margin-top: auto; /* 6. Empurra o botão para o final do container .produto-info */
+            /* --- FIM DA CORREÇÃO --- */
         }
 
         .btn-compra:hover {
